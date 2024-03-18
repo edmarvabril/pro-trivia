@@ -12,6 +12,13 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		5BB3AF052BA7EF870005981F /* correct.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5BB3AF022BA7EF870005981F /* correct.mp3 */; };
+		5BB3AF062BA7EF870005981F /* timer.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5BB3AF032BA7EF870005981F /* timer.mp3 */; };
+		5BB3AF072BA7EF870005981F /* incorrect.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5BB3AF042BA7EF870005981F /* incorrect.mp3 */; };
+		5BB3AF0B2BA7F4AB0005981F /* yay.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5BB3AF0A2BA7F4AB0005981F /* yay.mp3 */; };
+		5BB3AF0D2BA7F68D0005981F /* bgm.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5BB3AF0C2BA7F68D0005981F /* bgm.mp3 */; };
+		5BB3AF0F2BA7F9220005981F /* start.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5BB3AF0E2BA7F9210005981F /* start.mp3 */; };
+		5BB3AF112BA7F9570005981F /* tap.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5BB3AF102BA7F9560005981F /* tap.mp3 */; };
 		7699B88040F8A987B510C191 /* libPods-ProSolTrivia-ProSolTriviaTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-ProSolTrivia-ProSolTriviaTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -40,6 +47,13 @@
 		3B4392A12AC88292D35C810B /* Pods-ProSolTrivia.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProSolTrivia.debug.xcconfig"; path = "Target Support Files/Pods-ProSolTrivia/Pods-ProSolTrivia.debug.xcconfig"; sourceTree = "<group>"; };
 		5709B34CF0A7D63546082F79 /* Pods-ProSolTrivia.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProSolTrivia.release.xcconfig"; path = "Target Support Files/Pods-ProSolTrivia/Pods-ProSolTrivia.release.xcconfig"; sourceTree = "<group>"; };
 		5B7EB9410499542E8C5724F5 /* Pods-ProSolTrivia-ProSolTriviaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProSolTrivia-ProSolTriviaTests.debug.xcconfig"; path = "Target Support Files/Pods-ProSolTrivia-ProSolTriviaTests/Pods-ProSolTrivia-ProSolTriviaTests.debug.xcconfig"; sourceTree = "<group>"; };
+		5BB3AF022BA7EF870005981F /* correct.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = correct.mp3; sourceTree = "<group>"; };
+		5BB3AF032BA7EF870005981F /* timer.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = timer.mp3; sourceTree = "<group>"; };
+		5BB3AF042BA7EF870005981F /* incorrect.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = incorrect.mp3; sourceTree = "<group>"; };
+		5BB3AF0A2BA7F4AB0005981F /* yay.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = yay.mp3; sourceTree = "<group>"; };
+		5BB3AF0C2BA7F68D0005981F /* bgm.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bgm.mp3; sourceTree = "<group>"; };
+		5BB3AF0E2BA7F9210005981F /* start.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = start.mp3; sourceTree = "<group>"; };
+		5BB3AF102BA7F9560005981F /* tap.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = tap.mp3; sourceTree = "<group>"; };
 		5DCACB8F33CDC322A6C60F78 /* libPods-ProSolTrivia.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ProSolTrivia.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = ProSolTrivia/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-ProSolTrivia-ProSolTriviaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProSolTrivia-ProSolTriviaTests.release.xcconfig"; path = "Target Support Files/Pods-ProSolTrivia-ProSolTriviaTests/Pods-ProSolTrivia-ProSolTriviaTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -116,6 +130,13 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				5BB3AF102BA7F9560005981F /* tap.mp3 */,
+				5BB3AF0E2BA7F9210005981F /* start.mp3 */,
+				5BB3AF0C2BA7F68D0005981F /* bgm.mp3 */,
+				5BB3AF0A2BA7F4AB0005981F /* yay.mp3 */,
+				5BB3AF022BA7EF870005981F /* correct.mp3 */,
+				5BB3AF042BA7EF870005981F /* incorrect.mp3 */,
+				5BB3AF032BA7EF870005981F /* timer.mp3 */,
 				13B07FAE1A68108700A75B9A /* ProSolTrivia */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* ProSolTriviaTests */,
@@ -241,8 +262,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5BB3AF0B2BA7F4AB0005981F /* yay.mp3 in Resources */,
+				5BB3AF072BA7EF870005981F /* incorrect.mp3 in Resources */,
+				5BB3AF062BA7EF870005981F /* timer.mp3 in Resources */,
+				5BB3AF112BA7F9570005981F /* tap.mp3 in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				5BB3AF0F2BA7F9220005981F /* start.mp3 in Resources */,
+				5BB3AF052BA7EF870005981F /* correct.mp3 in Resources */,
+				5BB3AF0D2BA7F68D0005981F /* bgm.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -580,10 +608,7 @@
 					"-DFOLLY_USE_LIBCPP=1",
 					"-DFOLLY_CFG_NO_COROUTINES=1",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					" ",
-				);
+				OTHER_LDFLAGS = "$(inherited)  ";
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				USE_HERMES = true;
@@ -651,10 +676,7 @@
 					"-DFOLLY_USE_LIBCPP=1",
 					"-DFOLLY_CFG_NO_COROUTINES=1",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					" ",
-				);
+				OTHER_LDFLAGS = "$(inherited)  ";
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				USE_HERMES = true;

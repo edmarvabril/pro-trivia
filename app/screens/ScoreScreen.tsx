@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
 import {useSelector, useDispatch} from 'react-redux';
 import {RootState} from '../redux/store';
@@ -8,6 +8,20 @@ import {useNavigation} from '@react-navigation/core';
 import {typography} from '../styles/typography';
 import * as Animatable from 'react-native-animatable';
 
+import Sound from 'react-native-sound';
+
+const successSound = new Sound('yay.mp3', Sound.MAIN_BUNDLE, error => {
+  if (error) {
+    console.log('Error loading sound: ', error);
+  }
+});
+
+const startSound = new Sound('start.mp3', Sound.MAIN_BUNDLE, error => {
+  if (error) {
+    console.log('Error loading sound: ', error);
+  }
+});
+
 export const ScoreScreen = () => {
   const dispatch = useDispatch();
   const navigation = useNavigation();
@@ -15,7 +29,12 @@ export const ScoreScreen = () => {
   const nickname = useSelector((state: RootState) => state.game.nickname);
   const avatarUrl = useSelector((state: RootState) => state.game.avatarUrl);
 
+  useEffect(() => {
+    successSound.play();
+  }, []);
+
   const handleRestartGame = () => {
+    startSound.play();
     dispatch(resetGame());
     navigation.navigate('WelcomeScreen');
   };

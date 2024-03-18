@@ -10,7 +10,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import React, {useCallback, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import {colors} from '../styles/colors';
 import {moderateScale} from 'react-native-size-matters';
 import {typography} from '../styles/typography';
@@ -26,8 +26,25 @@ import {setSelectedNickname, setSelectedAvatarUrl} from '../redux/slice';
 import {useNavigation} from '@react-navigation/native';
 import {CustomAlert} from '../components/CustomAlert';
 import * as Animatable from 'react-native-animatable';
+import Sound from 'react-native-sound';
 
-const AnimatedLogo = require('../assets/logo.json');
+const bgSound = new Sound('bgm.mp3', Sound.MAIN_BUNDLE, error => {
+  if (error) {
+    console.log('Error loading sound: ', error);
+  }
+});
+
+const startSound = new Sound('start.mp3', Sound.MAIN_BUNDLE, error => {
+  if (error) {
+    console.log('Error loading sound: ', error);
+  }
+});
+
+const tapSound = new Sound('tap.mp3', Sound.MAIN_BUNDLE, error => {
+  if (error) {
+    console.log('Error loading sound: ', error);
+  }
+});
 
 const avatarUrls = Array.from(
   {length: 20},
@@ -42,6 +59,15 @@ export const WelcomeScreen = () => {
   const scale = useSharedValue(1);
   const dispatch = useDispatch();
   const navigation = useNavigation();
+
+  bgSound.setNumberOfLoops(-1);
+
+  useEffect(() => {
+    bgSound.play();
+    return () => {
+      bgSound.stop();
+    };
+  }, []);
 
   // Function to start the pulsing animation
   const startPulseAnimation = useCallback(() => {
@@ -82,7 +108,10 @@ export const WelcomeScreen = () => {
       return (
         <Animated.View style={[isSelected && animatedPulseStyle]}>
           <TouchableOpacity
-            onPress={() => setAvatar(avatarUrl)}
+            onPress={() => {
+              tapSound.play();
+              setAvatar(avatarUrl);
+            }}
             onPressIn={startPulseAnimation}
             onPressOut={stopPulseAnimation}>
             <Image
@@ -104,6 +133,7 @@ export const WelcomeScreen = () => {
 
   const handleStartGame = useCallback(() => {
     if (nickname && selectedAvatar) {
+      startSound.play();
       // set the nickname and avatar URL in the Redux store
       dispatch(setSelectedNickname(nickname!));
       dispatch(setSelectedAvatarUrl(selectedAvatar!));

@@ -31,10 +31,37 @@ import Animated, {
 import {shuffleArray} from '../helpers/helper';
 import * as Animatable from 'react-native-animatable';
 import {useNavigation} from '@react-navigation/core';
+import Sound from 'react-native-sound';
 
 const AnimatedLogo = require('../assets/logo.json');
 
 const timerValue = 30;
+
+const timerSound = new Sound('timer.mp3', Sound.MAIN_BUNDLE, error => {
+  if (error) {
+    console.log('Error loading sound: ', error);
+  }
+});
+
+const correctAnswerSound = new Sound(
+  'correct.mp3',
+  Sound.MAIN_BUNDLE,
+  error => {
+    if (error) {
+      console.log('Error loading sound: ', error);
+    }
+  },
+);
+
+const inCorrectAnswerSound = new Sound(
+  'incorrect.mp3',
+  Sound.MAIN_BUNDLE,
+  error => {
+    if (error) {
+      console.log('Error loading sound: ', error);
+    }
+  },
+);
 
 export const QuizScreen = () => {
   const dispatch = useDispatch();
@@ -55,6 +82,8 @@ export const QuizScreen = () => {
 
   const buttonBackgroundColor = useSharedValue(colors.blue); // Initial background color of the button
 
+  inCorrectAnswerSound.setVolume(0.1);
+
   const handleNextQuestion = useCallback(() => {
     setSelectedOption(null);
     setTimer(timerValue);
@@ -69,11 +98,15 @@ export const QuizScreen = () => {
   }, [dispatch]);
 
   useEffect(() => {
+    timerSound.play();
     const intervalId = setInterval(() => {
       setTimer(prevTimer => prevTimer - 1);
     }, 1000);
 
-    return () => clearInterval(intervalId);
+    return () => {
+      clearInterval(intervalId);
+      timerSound.stop();
+    };
   }, [currentQuestionNumber]);
 
   // Effect to move to the next question when the timer reaches 0
@@ -85,6 +118,7 @@ export const QuizScreen = () => {
 
   useEffect(() => {
     if (currentQuestionNumber >= 10) {
+      timerSound.stop();
       navigation.navigate('ScoreScreen');
     }
   }, [currentQuestionNumber, navigation]);
@@ -108,11 +142,13 @@ export const QuizScreen = () => {
     const isCorrectAnswer = selected === currentQuestion.correctAnswer;
 
     if (isCorrectAnswer) {
+      correctAnswerSound.play();
       // If the selected option is correct, increase the score
       buttonBackgroundColor.value = withTiming(colors.green, {duration: 500});
       dispatch(increaseScore());
     } else {
       // incorrect
+      inCorrectAnswerSound.play();
       buttonBackgroundColor.value = withTiming(colors.red, {duration: 500});
     }
 
