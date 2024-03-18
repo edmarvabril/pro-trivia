@@ -24,17 +24,20 @@ import Animated, {
 import {useDispatch} from 'react-redux';
 import {setSelectedNickname, setSelectedAvatarUrl} from '../redux/slice';
 import {useNavigation} from '@react-navigation/native';
+import {CustomAlert} from '../components/CustomAlert';
+import * as Animatable from 'react-native-animatable';
 
 const AnimatedLogo = require('../assets/logo.json');
 
 const avatarUrls = Array.from(
   {length: 20},
-  (_, index) => `https://api.multiavatar.com/${index + 123}.png`,
+  (_, index) => `https://api.multiavatar.com/prosol${index}.png`,
 );
 
 export const WelcomeScreen = () => {
   const [selectedAvatar, setSelectedAvatar] = useState<string | undefined>();
   const [nickname, setNickname] = useState<string | undefined>();
+  const [showAlert, setShowAlert] = useState(false);
 
   const scale = useSharedValue(1);
   const dispatch = useDispatch();
@@ -108,14 +111,19 @@ export const WelcomeScreen = () => {
       // Navigate to the Quiz screen
       navigation.navigate('QuizScreen');
     } else {
-      Alert.alert('Oops', 'Pick your avatar and nickname.');
+      setShowAlert(true);
     }
   }, [dispatch, navigation, nickname, selectedAvatar]);
 
   return (
     <SafeAreaView style={styles.container}>
-      <LottieView source={AnimatedLogo} style={styles.logo} autoPlay loop />
-      <Text style={styles.title}>Welcome to Pro-Trivia</Text>
+      <Animatable.Text
+        animation="tada"
+        iterationCount="infinite"
+        duration={2500}
+        style={styles.title}>
+        Welcome to Pro-Trivia
+      </Animatable.Text>
       {selectedAvatar ? (
         <Animated.Image
           source={{uri: selectedAvatar}}
@@ -134,9 +142,14 @@ export const WelcomeScreen = () => {
         autoCapitalize="none"
         onChangeText={setNickname}
       />
-      <TouchableOpacity onPress={handleStartGame} style={[styles.playButton]}>
-        <Text style={styles.playButtonText}>PLAY</Text>
-      </TouchableOpacity>
+      <Animatable.View
+        animation="pulse"
+        iterationCount="infinite"
+        duration={1500}>
+        <TouchableOpacity onPress={handleStartGame} style={[styles.playButton]}>
+          <Text style={styles.playButtonText}>PLAY</Text>
+        </TouchableOpacity>
+      </Animatable.View>
       <KeyboardAvoidingView>
         <FlatList
           scrollEnabled={false}
@@ -145,6 +158,7 @@ export const WelcomeScreen = () => {
           renderItem={({item}) => renderAvatar(item)}
         />
       </KeyboardAvoidingView>
+      <CustomAlert visible={showAlert} onClose={() => setShowAlert(false)} />
     </SafeAreaView>
   );
 };
@@ -173,7 +187,7 @@ const styles = StyleSheet.create({
     color: colors.blue,
     fontWeight: '600',
     textAlign: 'center',
-    marginTop: moderateScale(-20),
+    marginTop: moderateScale(40),
     marginBottom: moderateScale(10),
   },
   nicknameInput: {
@@ -185,10 +199,6 @@ const styles = StyleSheet.create({
     fontSize: typography.lg,
     borderRadius: 5,
     padding: moderateScale(5),
-  },
-  logo: {
-    width: moderateScale(110),
-    height: moderateScale(110),
   },
   selectedAvatar: {
     height: 160,

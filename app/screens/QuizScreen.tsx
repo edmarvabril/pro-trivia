@@ -168,8 +168,10 @@ export const QuizScreen = () => {
 
   const timerColor = () => {
     if (timer <= timerValue / 4) {
+      // quarter of alloted duration
       return colors.red;
     } else if (timer <= timerValue / 2) {
+      // half of alloted duration
       return colors.orange;
     } else {
       return colors.blue;

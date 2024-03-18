@@ -5,6 +5,8 @@ import {RootState} from '../redux/store';
 import {resetGame} from '../redux/slice';
 import {colors} from '../styles/colors';
 import {useNavigation} from '@react-navigation/core';
+import {typography} from '../styles/typography';
+import * as Animatable from 'react-native-animatable';
 
 export const ScoreScreen = () => {
   const dispatch = useDispatch();
@@ -20,14 +22,21 @@ export const ScoreScreen = () => {
 
   return (
     <View style={styles.container}>
-      <Image source={{uri: avatarUrl}} style={styles.avatar} />
+      <Animatable.Image
+        animation="bounce"
+        iterationCount="infinite"
+        source={{uri: avatarUrl}}
+        style={styles.avatar}
+      />
       <Text style={styles.nickname}>{nickname}</Text>
       <Text style={styles.scoreText}>You scored {score} out of 10!</Text>
-      <TouchableOpacity
-        style={styles.restartButton}
-        onPress={handleRestartGame}>
-        <Text style={styles.restartButtonText}>Restart Game</Text>
-      </TouchableOpacity>
+      <Animatable.View animation="pulse" iterationCount="infinite">
+        <TouchableOpacity
+          style={styles.restartButton}
+          onPress={handleRestartGame}>
+          <Text style={styles.restartButtonText}>Restart Game</Text>
+        </TouchableOpacity>
+      </Animatable.View>
     </View>
   );
 };
@@ -37,23 +46,27 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: colors.beige,
+    backgroundColor: colors.pink,
     paddingHorizontal: 15,
   },
   avatar: {
-    height: 160,
-    width: 160,
-    borderRadius: 80,
+    height: 200,
+    width: 200,
+    borderRadius: 200 / 2,
     marginBottom: 20,
+    borderWidth: 5,
+    borderColor: colors.blue,
   },
   nickname: {
-    fontSize: 20,
+    fontSize: typography.xl,
     fontWeight: 'bold',
     marginBottom: 20,
+    color: colors.darkgrey,
   },
   scoreText: {
-    fontSize: 18,
+    fontSize: typography.xl,
     marginBottom: 20,
+    color: colors.darkgrey,
   },
   restartButton: {
     backgroundColor: colors.blue,
